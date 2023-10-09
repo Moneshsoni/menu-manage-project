@@ -1,8 +1,9 @@
 class MenusController < ApplicationController
-  
+
   # GET /menus
   def index
-    @menus = Menu.all
+    # @menus = Menu.all
+    @menus = Menu.paginate(page: params[:page], per_page: params[:per_page])
   end
 
   # GET /menus/1
