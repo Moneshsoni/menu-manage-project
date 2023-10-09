@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   
   # GET /menus
   def index
+    binding.pry
     @menus = Menu.all
   end
 
@@ -12,6 +13,7 @@ class MenusController < ApplicationController
 
   # POST /menus
   def create
+    binding.pry
     @menu = Menu.new(menu_params)
 
     if @menu.save
