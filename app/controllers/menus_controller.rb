@@ -2,13 +2,28 @@ class MenusController < ApplicationController
 
   # GET /menus
   def index
-    # @menus = Menu.all
     @menus = Menu.paginate(page: params[:page], per_page: params[:per_page])
   end
 
   # GET /menus/1
   def show
     @menu = Menu.find(params[:id])
+  end
+
+  #SORT menus by name and price menus/sort?sort_by=name&order=desc
+  def sort
+    sort_by = params[:sort_by]
+    order = params[:order]
+    case sort_by
+    when 'name'
+      @menus = Menu.order(name: order)
+    when 'price'
+      @menus = Menu.order(price: order)
+    else
+      # Handle invalid sorting options, or provide a default sorting
+      @menus = Menu.all
+    end
+    render json: @menus
   end
 
   # POST /menus
