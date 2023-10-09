@@ -2,7 +2,6 @@ class MenusController < ApplicationController
   
   # GET /menus
   def index
-    binding.pry
     @menus = Menu.all
   end
 
@@ -13,9 +12,7 @@ class MenusController < ApplicationController
 
   # POST /menus
   def create
-    binding.pry
     @menu = Menu.new(menu_params)
-
     if @menu.save
       @menu
     else
@@ -25,6 +22,7 @@ class MenusController < ApplicationController
 
   # PATCH/PUT /menus/1
   def update
+    @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
       @menu
     else
@@ -34,10 +32,11 @@ class MenusController < ApplicationController
 
   # DELETE /menus/1
   def destroy
+    @menu = Menu.find(params[:id])
     @menu.destroy
   end
 
-private
+  private
 
   # Only allow a trusted parameter "white list" through.
   def menu_params
