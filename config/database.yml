@@ -91,4 +91,4 @@ production:
   database: manu_management_production
   username: manu_management
   password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
-  port: 5432  
+  port: 5432
