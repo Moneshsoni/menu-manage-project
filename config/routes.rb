@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :menus do
     collection do
       get 'sort'
+      get 'search'
     end
   end
 end

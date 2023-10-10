@@ -26,6 +26,13 @@ class MenusController < ApplicationController
     render json: @menus
   end
 
+  #SEARCH  menus/search?name=test
+  def search
+    name = params[:name]
+    @menus = Menu.where('name LIKE ?', "%#{name}%")
+    render json: @menus
+  end
+
   # POST /menus
   def create
     @menu = Menu.new(menu_params)
