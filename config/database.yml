@@ -91,7 +91,7 @@ production:
   encoding: utf8
   url: <%= ENV['DATABASE_URL'] %>
   database: manu_management_production
-  pool: 5
+  pool: 10
   username: manu_management
   password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
   host: 18.142.128.26
