@@ -88,10 +88,11 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   url: <%= ENV['DATABASE_URL'] %>
   database: manu_management_production
+  pool: 5
   username: manu_management
   password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
   host: 13.228.225.19
-  port: 5432
+  port: 5432 
