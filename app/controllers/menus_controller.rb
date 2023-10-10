@@ -2,7 +2,6 @@ class MenusController < ApplicationController
   
   # GET /menus
   def index
-    binding.pry
     @menus = Menu.paginate(page: params[:page], per_page: params[:per_page])
   end
 
