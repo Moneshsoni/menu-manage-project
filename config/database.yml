@@ -24,6 +24,7 @@ default: &default
   pool: 10
   username: postgres
   password: postgres
+  port: 5432  
 
 development:
   <<: *default
@@ -90,3 +91,4 @@ production:
   database: manu_management_production
   username: manu_management
   password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
+  port: 5432  
