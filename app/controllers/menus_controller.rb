@@ -32,7 +32,7 @@ class MenusController < ApplicationController
     if @menu.save
       @menu
     else
-      render json: @menu.errors, status: :unprocessable_entity
+      render json: @menu.errors, status: :ok
     end
   end
 
@@ -42,7 +42,7 @@ class MenusController < ApplicationController
     if @menu.update(menu_params)
       @menu
     else
-      render json: @menu.errors, status: :unprocessable_entity
+      render json: @menu.errors, status: :ok
     end
   end
 
