@@ -93,5 +93,5 @@ production:
   database: manu_management_production
   username: manu_management
   password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
-  host: dpg-ckihm7ke1qns73fdfs50-a
+  host: 13.228.225.19
   port: 5432
