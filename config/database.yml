@@ -83,13 +83,10 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+ 
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: manu_management_production
   username: manu_management
-  password: <%= ENV["MANU_MANAGEMENT_DATABASE_PASSWORD"] %>
-  port: 5432
-  # hostname: <%= ENV["HOSTNAME"] %>
-  url: <%= ENV['DATABASE_URL'] %>
-  # internal url: postgres://manu_management:GZcz8ByEkhwGuPWy7m3PlctKJvzQ2aSv@dpg-ckihm7ke1qns73fdfs50-a/manu_management_production
-  # external url: postgres://manu_management:GZcz8ByEkhwGuPWy7m3PlctKJvzQ2aSv@dpg-ckihm7ke1qns73fdfs50-a.oregon-postgres.render.com/manu_management_production
+  password: <%= ENV['MANU_MANAGEMENT_DATABASE_PASSWORD'] %>
