@@ -89,3 +89,4 @@ production:
   username: manu_management
   password: <%= ENV["MANU_MANAGEMENT_DATABASE_PASSWORD"] %>
   port: 5432
+  hostname: <%= ENV["HOSTNAME"] %>
