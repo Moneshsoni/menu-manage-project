@@ -5,6 +5,8 @@
   3. User can sort the price and name.
   4. Pagination enables users to navigate through a large dataset by breaking it into multiple pages. It typically includes links or buttons for "Next," "Previous," and specific page numbers.
   5. Deploy on the render cloud platforms.
+  6. Docerize the applications.
+  7. Write the automations testcases.
 
 ## Prerequisites:
  1. Ruby 3.0.0
@@ -69,4 +71,10 @@
   ```bash
     $ rspec
   ```
+## check the api collection json on this path using command
+  ```bash
+    $ cat manu-management/menu-project.postman_collection.json
+  ```  
+
+
 
