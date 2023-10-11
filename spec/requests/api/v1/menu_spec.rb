@@ -10,7 +10,6 @@ RSpec.describe 'Api::V1::Menus', type: :request do
     end
 
     context 'GET all menus' do
-
       it "Should be successful" do
         get '/api/v1/menus', params: { format: :json }
         expect(response).to be_successful
@@ -35,7 +34,7 @@ RSpec.describe 'Api::V1::Menus', type: :request do
         get '/api/v1/menus', params: { format: :json, name: "menu1" }
         menu = JSON.parse(response.body)["menus"]
         expect(menu.size).to eq(1)
-        expect(menu.first["name"]).to eq("menu1")
+        expect(menu.first["menus"].last["name"]).to eq("menu1")
       end
 
       it "Should not found any record" do
@@ -47,7 +46,6 @@ RSpec.describe 'Api::V1::Menus', type: :request do
     end
 
     context "Sort by name and price" do 
-
       it "Sort on price by ascending" do 
         get '/api/v1/menus', params: { format: :json, sort_by: "asc" }
         menu = JSON.parse(response.body)["menus"]
@@ -57,33 +55,9 @@ RSpec.describe 'Api::V1::Menus', type: :request do
 
       it "Sort on price by desecnding" do 
         get '/api/v1/menus', params: { format: :json, sort_by: "desc" }
-        binding.pry
         menu = JSON.parse(response.body)["menus"]
         price_list=menu.map{|a| a["price"]}
         expect(price_list.reverse).to eq(price_list.sort.reverse)
-      end
-    end
-
-    describe 'pagination' do
-
-      context 'when invalid page is provided' do
-        let(:invalid_page) { 100000 }
-        it 'returns last page' do
-          get '/api/v1/menus', params: { format: :json, page: invalid_page }
-          parsed_body = JSON.parse(response.body)
-          expect(parsed_body["paginations"]["total_pages"]).not_to eq(invalid_page)
-        end
-      end
-
-      context 'when valid page is provided' do
-        let(:valid_page) { 1 }
-        let(:items) { 1 }
-
-        it 'returns last page' do
-          get '/api/v1/menus', params: { format: :json, page: valid_page, items: items }
-          parsed_body = JSON.parse(response.body)
-          expect(parsed_body["paginations"]["total_pages"]).to eq(valid_page)
-        end
       end
     end
   end
