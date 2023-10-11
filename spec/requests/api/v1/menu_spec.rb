@@ -57,6 +57,7 @@ RSpec.describe 'Api::V1::Menus', type: :request do
 
       it "Sort on price by desecnding" do 
         get '/api/v1/menus', params: { format: :json, sort_by: "desc" }
+        binding.pry
         menu = JSON.parse(response.body)["menus"]
         price_list=menu.map{|a| a["price"]}
         expect(price_list.reverse).to eq(price_list.sort.reverse)
@@ -64,12 +65,11 @@ RSpec.describe 'Api::V1::Menus', type: :request do
     end
 
     describe 'pagination' do
-      
+
       context 'when invalid page is provided' do
         let(:invalid_page) { 100000 }
         it 'returns last page' do
           get '/api/v1/menus', params: { format: :json, page: invalid_page }
-          binding.pry
           parsed_body = JSON.parse(response.body)
           expect(parsed_body["paginations"]["total_pages"]).not_to eq(invalid_page)
         end
