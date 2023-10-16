@@ -4,4 +4,13 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+
+require 'faker'
+
+100.times do
+  Menu.create(
+    name: Faker::Name.name,
+    price: Faker::Commerce.price
+  )
+end
 #   Character.create(name: "Luke", movie: movies.first)
